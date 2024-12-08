@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { ThemeMode } from "../models/ThemeMode";
 
 interface AppState {
     lightMode: boolean;
@@ -8,7 +7,7 @@ interface AppState {
 
 }
 
-const useAppState = create<AppState>((set, get) => ({
+export const useAppState = create<AppState>((set, get) => ({
     lightMode: true,
 
     toggleThemeMode() {
