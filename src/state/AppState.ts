@@ -3,14 +3,14 @@ import { create } from "zustand";
 interface AppState {
     lightMode: boolean;
 
-    toggleThemeMode: () => void;
+    toggleLightMode: () => void;
 
 }
 
 export const useAppState = create<AppState>((set, get) => ({
     lightMode: true,
 
-    toggleThemeMode() {
+    toggleLightMode() {
         set({ lightMode: !get().lightMode })
     }
 }));
