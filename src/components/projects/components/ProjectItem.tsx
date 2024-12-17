@@ -12,7 +12,10 @@ export function ProjectItem() {
     ? AppColors.darkGreenAuxilary
     : AppColors.black;
 
-  return (
+    const headingTextColor = lightModeState ? AppColors.darkGreenAuxilary : AppColors.white
+    const subheadingTextColor = lightModeState ? AppColors.blueGreenTertiary : AppColors.lightBlackSecondary
+  
+    return (
     <div className="relative m-8">
       <div
         style={{ backgroundColor: itemBackgroundColor, zIndex: 1 }}
@@ -21,8 +24,8 @@ export function ProjectItem() {
         <section className="flex flex-col">
           <div className="flex justify-between">
             <div className="flex flex-col pb-4">
-              <h1 className="text-2xl font-bold">Title</h1>
-              <h3 className="text-lg">Subtitle</h3>
+              <h1 style={{ color: headingTextColor}} className="text-2xl font-bold">Title</h1>
+              <h3 style={{ color: subheadingTextColor}} className="text-lg">Subtitle</h3>
             </div>
             <div className="h-16 w-16 ml-4 bg-orangeHighlight"></div>
           </div>
