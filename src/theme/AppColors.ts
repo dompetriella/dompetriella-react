@@ -17,6 +17,8 @@ class AppColors {
 
     static white = '#E8E4E4'; // lightText
     static black = '#171717'; // darkText
+    static darkGreenSubheading = "#4E8554";
+    static lightGreySubheading = "#7C7C7C";
     static darkGreenAuxilary = '#2B452D'; // darkGreenText
     static darkBlueAuxilary = '#385961'; // darkBlueText
 }

@@ -4,8 +4,8 @@ type ProjectItemDataProps = {
 	title: string;
 	subtitle: string;
 	imagePath: string;
+	information: string;
 	status?: string | null;
-	information?: string | null;
 	sourceCodeLink?: string | null;
 	codeLang?: string | null;
 	additionalContent?: React.ReactNode | null;
@@ -15,8 +15,8 @@ export class ProjectItemData {
 	title: string;
 	subtitle: string;
 	imagePath: string;
+	information: string;
 	status: string | null;
-	information: string | null;
 	sourceCodeLink: string | null;
 	codeLang: string | null;
 	additionalContent: React.ReactNode | null;
@@ -25,8 +25,8 @@ export class ProjectItemData {
 		title,
 		subtitle,
 		imagePath,
+		information,
 		status = null,
-		information = null,
 		sourceCodeLink = null,
 		codeLang = null,
 		additionalContent = null,
