@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face{
+    font-family: "Alata";
+    src:local("Alata-Regular"),
+    url('./assets/fonts/Alata-Regular.ttf') 
+  }

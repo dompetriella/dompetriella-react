@@ -1,4 +1,9 @@
+import { ProjectItem } from "./components/ProjectItem";
+
 export function Projects() {
-    return <section>
-    </section>
+  return (
+    <>
+      <ProjectItem />
+    </>
+  );
 }

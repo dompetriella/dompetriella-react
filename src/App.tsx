@@ -6,6 +6,8 @@ import useWindowWidth from "./hooks/useWindowWidth";
 import { checkIfMobile } from "./utility/responsive";
 import { Navbar } from "./components/navbar/Navbar";
 import { Projects } from "./components/projects/Projects";
+import { motion } from "framer-motion";
+import { GLOBAL_colorChangeInterpolationDuration } from "./global/animations";
 
 function App() {
   const lightModeState = useAppState((state) => state.lightMode);
@@ -17,13 +19,14 @@ function App() {
 
   return (
     <>
-      <div
-        style={{ backgroundColor: backgroundColor }}
-        className="size-full flex flex-col  items-center relative"
+      <motion.div
+        animate={{ backgroundColor }}
+        transition={{ duration: GLOBAL_colorChangeInterpolationDuration, ease: "easeInOut" }}
+        className={"size-full flex flex-col items-center relative"} // Explicit string
       >
         <Navbar />
         <Projects />
-      </div>
+      </motion.div>
     </>
   );
 }
