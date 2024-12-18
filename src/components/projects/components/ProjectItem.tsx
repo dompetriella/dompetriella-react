@@ -77,10 +77,10 @@ export function ProjectItem({
           {/* source code/link */}
           {projectItemData.codeLang !== null ? (
             <div className="flex justify-between">
-              <h3 style={{ color: sourceCodeTextColor }}>
+              <a href={projectItemData!.sourceCodeLink!} target="_blank" rel="noopener noreferrer" style={{ color: sourceCodeTextColor }}>
                 {"Source Code".toUpperCase()}
-              </h3>
-              <h3 style={{ color: subheadingTextColor }}>Coding Lang</h3>
+              </a>
+              <h3 style={{ color: subheadingTextColor }}>{projectItemData.codeLang}</h3>
             </div>
           ) : null}
 
