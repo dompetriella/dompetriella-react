@@ -6,7 +6,7 @@ import { checkIfMobile } from "../../utility/responsive";
 
 export function Navbar() {
   const lightModeState = useAppState((state) => state.lightMode);
-  const toggleLightModeAction = useAppState((state) => state.toggleLightMode)
+  const toggleLightModeAction = useAppState((state) => state.toggleLightMode);
   const isMobile: boolean = checkIfMobile();
 
   const navBackdropColor = lightModeState
@@ -18,7 +18,10 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="relative w-full flex justify-center">
+      <nav
+        style={{ zIndex: 999 }}
+        className="relative w-full flex justify-center"
+      >
         <div className="fixed">
           <div
             style={{ backgroundColor: navBackdropColor }}
@@ -35,7 +38,10 @@ export function Navbar() {
             <div className="h-12 w-12 bg-orangeHighlight"></div>
             <div className="h-12 w-12 bg-orangeHighlight"></div>
             <div className="h-12 w-12 bg-orangeHighlight"></div>
-            <button onClick={() => toggleLightModeAction()} className="h-12 w-12 bg-orangeHighlight"></button>
+            <button
+              onClick={() => toggleLightModeAction()}
+              className="h-12 w-12 bg-orangeHighlight"
+            ></button>
           </div>
         </div>
       </nav>
