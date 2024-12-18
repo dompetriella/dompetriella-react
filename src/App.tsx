@@ -21,8 +21,11 @@ function App() {
     <>
       <motion.div
         animate={{ backgroundColor }}
-        transition={{ duration: GLOBAL_colorChangeInterpolationDuration, ease: "easeInOut" }}
-        className={"size-full flex flex-col items-center relative"} // Explicit string
+        transition={{
+          duration: GLOBAL_colorChangeInterpolationDuration,
+          ease: "easeInOut",
+        }}
+        className={"flex flex-col items-center relative"}
       >
         <Navbar />
         <Projects />

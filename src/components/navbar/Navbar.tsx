@@ -12,24 +12,47 @@ export function Navbar() {
   const navBackdropColor = lightModeState
     ? AppColors.darkGreenAuxilary
     : AppColors.black;
+  const navBackgroundTransitionColor = lightModeState
+    ? AppColors.lightBlueSecondary
+    : AppColors.orangeHighlight;
+
   const navBackgroundColor = lightModeState
     ? AppColors.lightGreenSecondary
     : AppColors.greyTertiary;
 
   return (
     <>
-      <nav
-        style={{ zIndex: 999 }}
-        className="relative w-full flex justify-center"
-      >
+      <nav style={{ zIndex: 999 }} className="relative flex justify-center">
         <div className="fixed">
-          <div
+          <motion.div
+            animate={{
+              backgroundColor: [
+                navBackgroundColor,
+                navBackgroundTransitionColor,
+                navBackdropColor,
+                navBackdropColor,
+              ],
+            }}
+            transition={{
+              duration: 1.0,
+              times: [0.2, 0.33, 0.75, 1],
+            }}
             style={{ backgroundColor: navBackdropColor }}
             className={`fixed ${
               isMobile ? "" : "top-8"
             } mx-auto w-10/12 left-0 right-0  h-16 rounded-2xl bottom-4 `}
-          ></div>
-          <div
+          ></motion.div>
+          <motion.div
+            initial={{
+              x: -6,
+              y: 8,
+            }}
+            animate={{ x: 0, y: 0 }}
+            transition={{
+              type: "spring",
+              delay: 0.25,
+              damping: 8,
+            }}
             style={{ backgroundColor: navBackgroundColor }}
             className={`fixed flex justify-evenly items-center ${
               isMobile ? "" : "top-6"
@@ -42,7 +65,7 @@ export function Navbar() {
               onClick={() => toggleLightModeAction()}
               className="h-12 w-12 bg-orangeHighlight"
             ></button>
-          </div>
+          </motion.div>
         </div>
       </nav>
     </>

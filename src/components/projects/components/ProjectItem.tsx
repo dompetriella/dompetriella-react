@@ -31,7 +31,7 @@ export function ProjectItem({
     : AppColors.orangeHighlight;
 
   return (
-    <div className="relative m-8">
+    <div className="relative my-4">
       <div
         style={{ backgroundColor: itemBackgroundColor, zIndex: 1 }}
         className="relative p-6 w-72 rounded-2xl"
@@ -51,7 +51,7 @@ export function ProjectItem({
                 {projectItemData.subtitle}
               </h3>
             </div>
-            <div className="h-16 w-16 ml-4 bg-orangeHighlight"></div>
+            <div className="h-16 w-16 bg-orangeHighlight"></div>
           </div>
 
           {/* status */}
@@ -77,10 +77,17 @@ export function ProjectItem({
           {/* source code/link */}
           {projectItemData.codeLang !== null ? (
             <div className="flex justify-between">
-              <a href={projectItemData!.sourceCodeLink!} target="_blank" rel="noopener noreferrer" style={{ color: sourceCodeTextColor }}>
+              <a
+                href={projectItemData!.sourceCodeLink!}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: sourceCodeTextColor }}
+              >
                 {"Source Code".toUpperCase()}
               </a>
-              <h3 style={{ color: subheadingTextColor }}>{projectItemData.codeLang}</h3>
+              <h3 style={{ color: subheadingTextColor }}>
+                {projectItemData.codeLang}
+              </h3>
             </div>
           ) : null}
 
