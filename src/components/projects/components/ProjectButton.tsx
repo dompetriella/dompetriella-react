@@ -15,13 +15,20 @@ export function ProjectButton({ buttonText }: { buttonText: string }) {
   return (
     <>
       <div
-        style={{
-          backgroundColor: mainButtonBackgroundColor,
-          color: mainButtonTextColor,
-        }}
-        className="w-32 h-32 text-2xl bg-red-500 rounded-full flex justify-center items-center tracking-widest"
+        style={{ zIndex: 10 }}
+        className="relative flex justify-center items-center w-full p-8 h-60"
       >
-        {buttonText}
+        <div className="absolute w-52 h-52 bottom-3 bg-red-600 rounded-full"></div>
+        <div className="absolute w-44 h-44 bottom-5 bg-black rounded-full"></div>
+        <button
+          style={{
+            backgroundColor: mainButtonBackgroundColor,
+            color: mainButtonTextColor,
+          }}
+          className="absolute w-36 h-36 text-2xl bottom-7  rounded-full flex justify-center items-center tracking-widest"
+        >
+          {buttonText}
+        </button>
       </div>
     </>
   );
