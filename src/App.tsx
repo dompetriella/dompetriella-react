@@ -28,7 +28,9 @@ function App() {
         className={"flex flex-col items-center relative"}
       >
         <Navbar />
+        <div className="pt-24"></div>
         <Projects />
+        <div className="pb-24"></div>
       </motion.div>
     </>
   );
