@@ -2,7 +2,13 @@ import App from "../../../App";
 import { useAppState } from "../../../state/AppState";
 import AppColors from "../../../theme/AppColors";
 
-export function ProjectButton({ buttonText }: { buttonText: string }) {
+export function ProjectButton({
+  buttonText,
+  onClick,
+}: {
+  buttonText: string;
+  onClick: () => void;
+}) {
   const lightModeState = useAppState((state) => state.lightMode);
 
   const mainButtonBackgroundColor = lightModeState
@@ -13,31 +19,43 @@ export function ProjectButton({ buttonText }: { buttonText: string }) {
     ? AppColors.white
     : AppColors.black;
 
-  const mainButtonShadowColor = lightModeState ? AppColors.darkBlueAuxilary : AppColors.darkGreyTertiary
+  const mainButtonShadowColor = lightModeState
+    ? AppColors.darkBlueAuxilary
+    : AppColors.darkGreyTertiary;
 
   const splashBackgroundColor = lightModeState
     ? AppColors.lightBlueSecondary
     : AppColors.lightGreyTertiary;
 
-
-
   return (
     <>
       <div
         style={{ zIndex: 10 }}
-        className="relative flex justify-center items-center w-full p-8 h-60"
+        className="relative flex justify-center items-center w-full p-8 h-60 my-8"
       >
-        <div style={{ backgroundColor: splashBackgroundColor, opacity: lightModeState ? 0.5 : 0.1 }} className="absolute w-52 h-52 bottom-3 rounded-full"></div>
-        <div style={{ backgroundColor: splashBackgroundColor, opacity: lightModeState ? 0.8 : 0.5 }} className="absolute w-44 h-44 bottom-5 rounded-full"></div>
+        <div
+          style={{
+            backgroundColor: splashBackgroundColor,
+            opacity: lightModeState ? 0.5 : 0.1,
+          }}
+          className="absolute w-52 h-52 bottom-3 rounded-full"
+        ></div>
+        <div
+          style={{
+            backgroundColor: splashBackgroundColor,
+            opacity: lightModeState ? 0.8 : 0.5,
+          }}
+          className="absolute w-44 h-44 bottom-5 rounded-full"
+        ></div>
         <div
           style={{
             backgroundColor: mainButtonShadowColor,
-            opacity: 0.50
+            opacity: 0.5,
           }}
           className="absolute w-36 h-36 bottom-[24px] rounded-full "
-        >
-        </div>
+        ></div>
         <button
+          onClick={onClick}
           style={{
             backgroundColor: mainButtonBackgroundColor,
             color: mainButtonTextColor,

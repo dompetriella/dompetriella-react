@@ -2,11 +2,14 @@ import { sub } from "framer-motion/client";
 import { ProjectItemData } from "../../../models/projectItemData";
 import { useAppState } from "../../../state/AppState";
 import AppColors from "../../../theme/AppColors";
+import { motion } from "framer-motion";
 
 export function ProjectItem({
   projectItemData,
+  index,
 }: {
   projectItemData: ProjectItemData;
+  index: number;
 }) {
   const lightModeState = useAppState((state) => state.lightMode);
 
@@ -31,8 +34,34 @@ export function ProjectItem({
     : AppColors.orangeHighlight;
 
   return (
-    <div className="relative my-4">
-      <div
+    <motion.div
+      initial={{ y: 160, opacity: 0 }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.75,
+          ease: "easeInOut",
+          delay: index * 0.1,
+        },
+      }}
+      exit={{
+        opacity: 0,
+        transition: {
+          duration: 0.75,
+          ease: "circIn",
+        },
+      }}
+      className="relative my-4"
+    >
+      <motion.div
+        initial={{ x: -8, y: 8 }}
+        animate={{ x: 0, y: 0 }}
+        transition={{
+          type: "spring",
+          delay: 0.75 + index * 0.25,
+          damping: 8,
+        }}
         style={{ backgroundColor: itemBackgroundColor, zIndex: 1 }}
         className="relative p-6 w-72 rounded-2xl"
       >
@@ -94,12 +123,13 @@ export function ProjectItem({
           {/* additional html */}
           {projectItemData.additionalContent}
         </section>
-      </div>
+      </motion.div>
+      {/* backdrop */}
       <div
         style={{ backgroundColor: itemBackdropColor, zIndex: 0 }}
         className="absolute w-full h-full -left-2 -bottom-2 rounded-2xl"
       ></div>
-    </div>
+    </motion.div>
   );
 }
 
