@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import useWindowWidth from "../../hooks/useWindowWidth";
+import useWindowWidth from "../../hooks/useScreenWidth";
 import { useAppState } from "../../state/AppState";
 import AppColors from "../../theme/AppColors";
 import { checkIfMobile } from "../../utility/responsive";

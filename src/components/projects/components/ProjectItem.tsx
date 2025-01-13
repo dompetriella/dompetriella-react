@@ -1,8 +1,9 @@
-import { sub } from "framer-motion/client";
 import { ProjectItemData } from "../../../models/projectItemData";
 import { useAppState } from "../../../state/AppState";
 import AppColors from "../../../theme/AppColors";
 import { motion } from "framer-motion";
+import { useScreenWidth } from "../../../hooks/useScreenWidth";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 export function ProjectItem({
   projectItemData,
@@ -12,6 +13,10 @@ export function ProjectItem({
   index: number;
 }) {
   const lightModeState = useAppState((state) => state.lightMode);
+
+  const isMobile = useIsMobile();
+
+  const initalMovementSize: number = 160;
 
   const itemBackgroundColor = lightModeState
     ? AppColors.lightGreenSecondary
@@ -35,9 +40,15 @@ export function ProjectItem({
 
   return (
     <motion.div
-      initial={{ y: 160, opacity: 0 }}
+      key={crypto.randomUUID()}
+      initial={{
+        y: isMobile ? initalMovementSize : 0,
+        x: isMobile ? 0 : initalMovementSize,
+        opacity: 0,
+      }}
       animate={{
         y: 0,
+        x: 0,
         opacity: 1,
         transition: {
           duration: 0.75,
@@ -48,11 +59,11 @@ export function ProjectItem({
       exit={{
         opacity: 0,
         transition: {
-          duration: 0.75,
+          duration: 0.4,
           ease: "circIn",
         },
       }}
-      className="relative my-4"
+      className="relative m-4"
     >
       <motion.div
         initial={{ x: -8, y: 8 }}

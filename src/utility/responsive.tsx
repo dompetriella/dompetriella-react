@@ -1,5 +1,5 @@
-import useWindowWidth from "../hooks/useWindowWidth";
+import useWindowWidth from "../hooks/useScreenWidth";
 
 export function checkIfMobile(): boolean {
-    return useWindowWidth() < 480;
+  return useWindowWidth() < 480;
 }

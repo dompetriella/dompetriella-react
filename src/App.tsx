@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import AppColors from "./theme/AppColors";
 import { useAppState } from "./state/AppState";
-import useWindowWidth from "./hooks/useWindowWidth";
+import useWindowWidth from "./hooks/useScreenWidth";
 import { checkIfMobile } from "./utility/responsive";
 import { Navbar } from "./components/navbar/Navbar";
 import { Projects } from "./components/projects/Projects";
