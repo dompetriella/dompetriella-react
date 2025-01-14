@@ -9,9 +9,11 @@ import useIsMobile from "../../../hooks/useIsMobile";
 export function ProjectItemArea({
   buttonTitle,
   projectItemContent,
+  isLeft = true,
 }: {
   buttonTitle: string;
   projectItemContent: ProjectItemData[];
+  isLeft?: boolean;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -23,13 +25,14 @@ export function ProjectItemArea({
         paddingLeft: isMobile ? 0 : 96,
         paddingRight: isMobile ? 0 : 96,
       }}
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center my-8"
     >
       <div className="flex flex-col items-center">
         <ProjectButton
           buttonText={buttonTitle.toUpperCase()}
           onClick={() => setIsExpanded(!isExpanded)}
           isExpanded={isExpanded}
+          isLeft={isLeft}
         />
 
         <AnimatePresence>
@@ -41,7 +44,7 @@ export function ProjectItemArea({
                 height: 0,
                 transition: {
                   duration: 0.5,
-                  ease: "easeInOut",
+                  ease: "circInOut",
                   delay: 0.5,
                 },
               }}

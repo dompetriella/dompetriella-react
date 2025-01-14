@@ -1,20 +1,27 @@
 import { useState } from "react";
-import App from "../../../App";
 import { useAppState } from "../../../state/AppState";
 import AppColors from "../../../theme/AppColors";
 import { motion } from "framer-motion";
+import useScreenWidth from "../../../hooks/useScreenWidth";
 
 export function ProjectButton({
   buttonText,
   onClick,
   isExpanded,
+  isLeft = true,
 }: {
   buttonText: string;
   onClick: () => void;
   isExpanded: boolean;
+  isLeft?: boolean;
 }) {
   const lightModeState = useAppState((state) => state.lightMode);
+
   const [isHovered, setIsHovered] = useState(false);
+
+  const screenWidth = useScreenWidth();
+
+  const direction = isLeft ? -1 : 1;
 
   const mainButtonBackgroundColor = lightModeState
     ? AppColors.blueTertiary
@@ -24,10 +31,6 @@ export function ProjectButton({
     ? AppColors.white
     : AppColors.black;
 
-  const mainButtonShadowColor = lightModeState
-    ? AppColors.darkBlueAuxilary
-    : AppColors.darkGreyTertiary;
-
   const splashBackgroundColor = lightModeState
     ? AppColors.lightBlueSecondary
     : AppColors.lightGreyTertiary;
@@ -36,10 +39,18 @@ export function ProjectButton({
     <>
       <div className="relative flex justify-center items-center w-60 p-8 h-60 my-8">
         {isExpanded ? (
-          <div className="relative flex justify-center items-center w-60 h-60 my-8">
+          <div className="">
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 5 }}
+              initial={{ scale: 0, x: 0, y: 0 }}
+              animate={{
+                scale: 4,
+                y: 240,
+                x: (direction * screenWidth) / (isLeft ? 3.5 : 5),
+                transition: {
+                  ease: "backOut",
+                  duration: 1.0,
+                },
+              }}
               style={{
                 backgroundColor: splashBackgroundColor,
                 opacity: lightModeState ? 0.5 : 0.1,
@@ -47,8 +58,17 @@ export function ProjectButton({
               className="absolute w-52 h-52 bottom-3 rounded-full"
             ></motion.div>
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 2.5 }}
+              initial={{ scale: 0, x: 0, y: 0 }}
+              animate={{
+                scale: 3,
+                x: (direction * screenWidth) / (isLeft ? 3.5 : 4.5),
+                y: 120,
+                transition: {
+                  delay: 0,
+                  ease: "backOut",
+                  duration: 0.75,
+                },
+              }}
               style={{
                 backgroundColor: splashBackgroundColor,
                 opacity: lightModeState ? 0.8 : 0.5,
@@ -58,17 +78,15 @@ export function ProjectButton({
           </div>
         ) : null}
         <div className="flex justify-center items-center">
-          {isHovered ? (
-            <motion.div
-              initial={{ opacity: 0, bottom: 28 }}
-              animate={{ opacity: 0.5, bottom: 20 }}
-              style={{
-                backgroundColor: mainButtonShadowColor,
-              }}
-              className="absolute w-36 h-36 rounded-full "
-            ></motion.div>
-          ) : null}
-          <button
+          <motion.button
+            initial={{ x: 0 }}
+            animate={{
+              x: isExpanded ? (direction * screenWidth) / 4 : 0,
+              transition: {
+                ease: "backOut",
+                duration: 1.0,
+              },
+            }}
             onMouseEnter={() => setIsHovered(() => true)}
             onMouseLeave={() => setIsHovered(() => false)}
             onClick={onClick}
@@ -81,7 +99,7 @@ export function ProjectButton({
           justify-center items-center tracking-widest"
           >
             {buttonText}
-          </button>
+          </motion.button>
         </div>
       </div>
     </>

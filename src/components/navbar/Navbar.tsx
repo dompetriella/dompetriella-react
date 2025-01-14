@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import useWindowWidth from "../../hooks/useScreenWidth";
 import { useAppState } from "../../state/AppState";
 import AppColors from "../../theme/AppColors";
-import { checkIfMobile } from "../../utility/responsive";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 export function Navbar() {
   const lightModeState = useAppState((state) => state.lightMode);
   const toggleLightModeAction = useAppState((state) => state.toggleLightMode);
-  const isMobile: boolean = checkIfMobile();
+  const screenWidthState = useScreenWidth();
+  const isMobile: boolean = screenWidthState < 768;
 
   const navBackdropColor = lightModeState
     ? AppColors.darkGreenAuxilary
