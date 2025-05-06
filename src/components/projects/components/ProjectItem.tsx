@@ -2,7 +2,6 @@ import { ProjectItemData } from "../../../models/projectItemData";
 import { useAppState } from "../../../state/AppState";
 import AppColors from "../../../theme/AppColors";
 import { motion } from "framer-motion";
-import { useScreenWidth } from "../../../hooks/useScreenWidth";
 import useIsMobile from "../../../hooks/useIsMobile";
 
 export function ProjectItem({
@@ -32,7 +31,7 @@ export function ProjectItem({
 
   const subheadingTextColor = lightModeState
     ? AppColors.darkGreenSubheading
-    : AppColors.lightGreySubheading;
+    : AppColors.blackPrimary;
 
   const sourceCodeTextColor = lightModeState
     ? AppColors.white

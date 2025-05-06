@@ -23,6 +23,12 @@ export function ProjectButton({
 
   const direction = isLeft ? -1 : 1;
 
+  // isExpanded in this context is whether or not the section is expanded
+  // main button shrinks when section is expanded
+  const mainButtonSize: number = isExpanded ? 144 : 192;
+  // in pixels
+  const mainButtonTextSize: number = isExpanded ? 28 : 40;
+
   const mainButtonBackgroundColor = lightModeState
     ? AppColors.blueTertiary
     : AppColors.white;
@@ -31,13 +37,16 @@ export function ProjectButton({
     ? AppColors.white
     : AppColors.black;
 
+
   const splashBackgroundColor = lightModeState
     ? AppColors.lightBlueSecondary
     : AppColors.lightGreyTertiary;
 
+  const buttonShadowColor = lightModeState ? AppColors.darkBlueAuxilary : AppColors.greyTertiary;
+
   return (
     <>
-      <div className="relative flex justify-center items-center w-60 p-8 h-60 my-8">
+      <div className="relative flex justify-center items-center w-full p-8 h-60 my-8">
         {isExpanded ? (
           <div className="">
             <motion.div
@@ -82,10 +91,15 @@ export function ProjectButton({
             initial={{ x: 0 }}
             animate={{
               x: isExpanded ? (direction * screenWidth) / 4 : 0,
-              transition: {
-                ease: "backOut",
-                duration: 1.0,
-              },
+              height: mainButtonSize,
+              width: mainButtonSize,
+              fontSize: `${mainButtonTextSize}px`
+            }}
+            transition={{
+              x: { ease: "backOut", duration: 1.0 },
+              height: { ease: "backOut", duration: 0.8 },
+              width: { ease: "backOut", duration: 0.4 },
+              fontSize: { ease: "backOut", duration: 0.4 },
             }}
             onMouseEnter={() => setIsHovered(() => true)}
             onMouseLeave={() => setIsHovered(() => false)}
@@ -93,10 +107,13 @@ export function ProjectButton({
             style={{
               backgroundColor: mainButtonBackgroundColor,
               color: mainButtonTextColor,
+              borderBottomWidth: isExpanded ? 0 : 8,
+              borderColor: buttonShadowColor
+              
             }}
-            className="hover:brightness-125 absolute w-36 h-36 
-          text-3xl bottom-7 rounded-full flex 
-          justify-center items-center tracking-widest"
+            className="hover:brightness-125 absolute
+           bottom-7 rounded-full flex
+          justify-center items-center tracking-widest shadow-xl"
           >
             {buttonText}
           </motion.button>

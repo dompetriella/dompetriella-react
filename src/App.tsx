@@ -26,9 +26,9 @@ function App() {
         className={"flex flex-col items-center relative"}
       >
         <Navbar />
-        <div className="pt-24"></div>
+        <div style={{ height: 240}}></div>
         <Projects />
-        <div className="pb-24"></div>
+        <div style={{ height: 720}}></div>
       </motion.div>
     </>
   );

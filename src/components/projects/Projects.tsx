@@ -8,7 +8,7 @@ import { ProjectItemArea } from "./components/ProjectArea";
 export function Projects() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-full overflow-clip">
+      <div className="flex flex-col justify-center items-center w-full overflow-x-clip">
         <ProjectItemArea
           buttonTitle={"Apps"}
           projectItemContent={CONTENT_appsProjectItemContent}
