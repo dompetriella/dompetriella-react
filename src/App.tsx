@@ -6,6 +6,7 @@ import { Projects } from "./components/projects/Projects";
 import { motion } from "framer-motion";
 import { GLOBAL_colorChangeInterpolationDuration } from "./global/animations";
 import useIsMobile from "./hooks/useIsMobile";
+import Showcase from "./components/showcase/Showcase";
 
 function App() {
   const lightModeState = useAppState((state) => state.lightMode);
@@ -23,12 +24,15 @@ function App() {
           duration: GLOBAL_colorChangeInterpolationDuration,
           ease: "easeInOut",
         }}
-        className={"flex flex-col items-center relative"}
+        className="flex flex-col items-center relative"
       >
         <Navbar />
-        <div style={{ height: 240}}></div>
+
+        <div style={{ height: 240 }}></div>
+        <Showcase />
         <Projects />
-        <div style={{ height: 720}}></div>
+
+        <div style={{ height: 720 }}></div>
       </motion.div>
     </>
   );
